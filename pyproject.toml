@@ -5,12 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "lyart_spec"
 version = "0.1.0"
-description = "A lightweight Python module for analytically evaluating Lyman-alpha "\
-              "spectra with radiative transfer "\
-              "under different simple geometries, optical depths, source positions, "\
-              "initial frequencies, recoil, and constant velocity gradients. "\
-              "Certain lya spectra from Monte Carlo radiative transfer simulations "\
-              "are also included."
+description = "A lightweight Python module for analytically evaluating Lyman-alpha spectra with radiative transfer under different simple geometries, optical depths, source positions, initial frequencies, recoil, and constant velocity gradients. Certain lya spectra from Monte Carlo radiative transfer simulations are also included."
 readme = "README.md"
 requires-python = ">=3.8.20"
 license = { text = "MIT License" }
