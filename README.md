@@ -33,7 +33,7 @@ Check the jupyter-notebook [lyart_spec_example.ipynb](lyart_spec_example.ipynb) 
 ### Function description
 There are three main functions for evaluating Lya spectra with RT, `lya_spec_cls` using closed-form solutions/formulae, `lya_spec_ses` using series solutions, and `lya_spec_sim` using cached RT simulations. 
 
-Here is a brief description of the input parameter that all three functions share. 
+Here is a brief description of the input parameters that all three functions share. 
 
 + `tau0 (float)`: Optical depth
 + `taus2tau0 (float)`: The ratio of source optical depth to cloud optical depth, between 0.0 and 1.0. 
@@ -89,7 +89,7 @@ xsim, ysim = las.lya_spec_sim(tau0 = 1e5, taus2tau0 = 0.0, xi = 0.0, geometry = 
 
 ### Available parameters of simulated Lya spectra with RT
 
-Only certain discrete values of the input parameters have corresponding RT simulations. When using `lya_spec_sim`, input parameters other than the available ones will raise an error. Here is a summary of the available input parameters. 
+Only certain discrete values of the input parameters have corresponding RT simulations. When using `lya_spec_sim`, passing parameter values other than the available ones will raise an error. Here is a summary of the available input parameter values. 
 
 **Simulation set `Sim_basic`**: varying `tau0`, `geometry`, and `recoil_flag`. 
 
