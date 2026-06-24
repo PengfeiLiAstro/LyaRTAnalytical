@@ -4,30 +4,10 @@ A Python module computing Lyman-alpha spectra with radiative transfer (RT) under
 
 ## Installation
 
-### Standard Installation
-You can install this package directly from GitHub using `pip`. 
-This is the recommended method for users who just want to import and use the functions.
 ```bash
-pip install git+[https://github.com/PengfeiLiAstro/LyaRTAnalytical.git](https://github.com/PengfeiLiAstro/LyaRTAnalytical.git)
-```
-
-### For Development
-
-If you want to view the source code, modify it, or contribute, clone the repository and install it in "editable" mode:
-
-```bash
-git clone [https://github.com/PengfeiLiAstro/LyaRTAnalytical.git](https://github.com/PengfeiLiAstro/LyaRTAnalytical.git)
+git clone https://github.com/PengfeiLiAstro/LyaRTAnalytical.git
 cd LyaRTAnalytical
 pip install -e .
-```
-
-If you want to see the usage examples in the provided [jupyter-notebook](lyart_spec_example.ipynb). 
-Use the following command to install the required dependencies. 
-
-```bash
-git clone [https://github.com/PengfeiLiAstro/LyaRTAnalytical.git](https://github.com/PengfeiLiAstro/LyaRTAnalytical.git)
-cd LyaRTAnalytical
-pip install -e .[dev]
 ```
 ## Repository Structure
 
