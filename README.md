@@ -147,7 +147,7 @@ recoil_flag = False
 T = 10.0
 ```
 
-**Simulation set `vgrad_tt_xi`**: varying `tau0`, `taus2tau0`, `xi`, `geometry`, and `v2b. 
+**Simulation set `vgrad_tt_xi`**: varying `tau0`, `taus2tau0`, `xi`, `geometry`, and `v2b`. 
 
 ```
 Varying parameters: 
