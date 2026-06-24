@@ -35,6 +35,7 @@ There are three main functions for evaluating Lya spectra with RT using closed-f
 # Example for lya_spec_cls.
 
 import lyart_spec as las
+import numpy as np
 
 # Set the frequency parameter for which emergent Lya intensity is evaluated. 
 x = np.linspace(-50, 50, 201)
@@ -46,6 +47,7 @@ xcls, ycls = las.lya_spec_cls(x = x, tau0 = 1e5, taus2tau0 = 0.0, xi = 0.0, geom
 # Example for lya_spec_ses.
 
 import lyart_spec as las
+import numpy as np
 
 # Set the frequency parameter for which emergent Lya intensity is evaluated. 
 x = np.linspace(-50, 50, 201)
@@ -192,6 +194,14 @@ For function `lya_spec_ses` of series solutions,
 For function `lya_spec_sim` of simulated spectra, 
 
 + Only certain discrete values of the input parameters have corresponding RT simulations. When using `lya_spec_sim`, input parameters other than the available ones will raise an error. Check Section **Available parameters of simulated Lya spectra with RT** for available parameters. 
+
+### Author & Email
+
+Pengfei Li. Email: Pengfei.Li@utah.edu.
+
+### Citations
+
+Please cite Li & Zheng (2026) if you use the package. 
 
 ## License
 
