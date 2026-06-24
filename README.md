@@ -4,6 +4,8 @@ A Python module computing Lyman-alpha spectra with radiative transfer (RT) under
 
 ## Installation
 
+Please follow the following codes for installation: 
+
 ```bash
 git clone https://github.com/PengfeiLiAstro/LyaRTAnalytical.git
 cd LyaRTAnalytical
@@ -26,10 +28,32 @@ LyaRTAnalytical/
 ```
 ## Usage
 ### Examples in jupyter-notebook
-Check the jupyter-notebook [lyart_spec_example.ipynb](lyart_spec_example.ipynb) for usage examples. More details can be found in Li&Zheng 2026. 
+Check the jupyter-notebook [lyart_spec_example.ipynb](lyart_spec_example.ipynb) for usage examples. More details can be found in Li & Zheng (2026). 
 
 ### Function description
-There are three main functions for evaluating Lya spectra with RT using closed-form solutions/formulae `lya_spec_cls`, series solutions `lya_spec_ses`, and RT simulations `lya_spec_sim`. Here are the usage examples for each of the function. 
+There are three main functions for evaluating Lya spectra with RT, `lya_spec_cls` using closed-form solutions/formulae, `lya_spec_ses` using series solutions, and `lya_spec_sim` using cached RT simulations. 
+
+Here is a brief description of the input parameter that all three functions share. 
+
++ `tau0 (float)`: Optical depth
++ `taus2tau0 (float)`: The ratio of source optical depth to cloud optical depth, between 0.0 and 1.0. 
++ `xi (float)`: Initial frequency.  
++ `geometry (str)`: `"sla"`, `"cyl"`, `"sph"` for slab, cylindrical, and spherical geometry, respectively.  
++ `v2b (float)`: The ratio of cloud edge velocity to thermal velocity.  
++ `recoil_flag (bool)`: `True`: with recoil; `False`: without recoil.  
++ `T (float)`: Temperature of the gas cloud in K.
+
+Here is a brief description of the additional input parameter for `lya_spec_cls`. 
+
++ `x (numpy.ndarray)`: A 1D array of frequency parameter.
+
+Here is a brief description of the additional input parameters for `lya_spec_ses`. 
+
++ `x (numpy.ndarray)`: A 1D array of frequency parameter.
+
++ `Nses (int)`: The number of terms to be evaluated in the series. For Nses=1000, the series solution will be evaluated from n=  0 to n=999, 1000 terms in total. 
+
+Here are the usage examples for each of the three functions. 
 
 ```python
 # Example for lya_spec_cls.
@@ -63,31 +87,11 @@ import lyart_spec as las
 xsim, ysim = las.lya_spec_sim(tau0 = 1e5, taus2tau0 = 0.0, xi = 0.0, geometry = "cyl", v2b = 0.0, recoil_flag = False, T = 10.0)
 ```
 
-Here is a brief description of the input parameter that all three functions share. 
-
-+ `tau0 (float)`: Optical depth
-+ `taus2tau0 (float)`: The ratio of source optical depth to cloud optical depth, between 0.0 and 1.0. 
-+ `xi (float)`: Initial frequency.  
-+ `geometry (str)`: `"sla"`, `"cyl"`, `"sph"` for slab, cylindrical, and spherical geometry, respectively.  
-+ `v2b (float)`: The ratio of cloud edge velocity to thermal velocity.  
-+ `recoil_flag (bool)`: `True`: with recoil; `False`: without recoil.  
-+ `T (float)`: Temperature of the gas cloud in K.
-
-Here is a brief description of the additional input parameter for `lya_spec_cls`. 
-
-+ `x (numpy.ndarray)`: A 1D array of frequency parameter.
-
-Here is a brief description of the additional input parameters for `lya_spec_ses`. 
-
-+ `x (numpy.ndarray)`: A 1D array of frequency parameter.
-
-+ `Nses (int)`: The number of terms to be evaluated in the series. For Nses=1000, the series solution will be evaluated from n=  0 to n=999, 1000 terms in total. 
-
 ### Available parameters of simulated Lya spectra with RT
 
 Only certain discrete values of the input parameters have corresponding RT simulations. When using `lya_spec_sim`, input parameters other than the available ones will raise an error. Here is a summary of the available input parameters. 
 
-**Simulation set `dft`**: varying `tau0`, `geometry`, and `recoil_flag`. 
+**Simulation set `Sim_basic`**: varying `tau0`, `geometry`, and `recoil_flag`. 
 
 ```
 Varying parameters:
@@ -102,7 +106,7 @@ v2b = 0.0
 T = 10.0
 ```
 
-**Simulation set `taus2tau0`**: varying `taus2tau0`, `geometry`, and `recoil_flag`. 
+**Simulation set `Sim_taus2tau0`**: varying `taus2tau0`, `geometry`, and `recoil_flag`. 
 
 ```
 Varying parameters: 
@@ -117,7 +121,7 @@ v2b = 0.0
 T = 10.0
 ```
 
-**Simulation set `xi`**: varying `xi`, `geometry`, and `recoil_flag`. 
+**Simulation set `Sim_xi`**: varying `xi`, `geometry`, and `recoil_flag`. 
 
 ```
 Varying parameters: 
@@ -132,7 +136,7 @@ v2b = 0.0
 T = 10.0
 ```
 
-**Simulation set `vgrad`**: varying `tau0`, `taus2tau0`, `xi`, `geometry`, and `v2b`. 
+**Simulation set `Sim_vgrad`**: varying `tau0`, `taus2tau0`, `xi`, `geometry`, and `v2b`. 
 
 ```
 Varying parameters: 
@@ -147,7 +151,7 @@ recoil_flag = False
 T = 10.0
 ```
 
-**Simulation set `vgrad_tt_xi`**: varying `tau0`, `taus2tau0`, `xi`, `geometry`, and `v2b`. 
+**Simulation set `Sim_vgrad_tt_xi`**: varying `tau0`, `taus2tau0`, `xi`, `geometry`, and `v2b`. 
 
 ```
 Varying parameters: 
@@ -162,7 +166,7 @@ recoil_flag = False
 T = 10.0
 ```
 
-**Simulation set `vgradT4`**: varying `tau0`, `geometry`, and `v2b`. (In previous simulation sets, temperature `T` is set at 10 K. In this set, the temperature `T` is set at 10000 K. ) 
+**Simulation set `Sim_vgradT4`**: varying `tau0`, `geometry`, and `v2b`. (In previous simulation sets, temperature `T` is set at 10 K. In this set, the temperature `T` is set at 10000 K. ) 
 
 ```
 Varying parameters: 
@@ -179,19 +183,19 @@ T = 10000.0
 
 ### Additional usage caution
 
-For function `lya_spec_cls` of closed-form solutions/formulae, 
+For function `lya_spec_cls` using closed-form solutions/formulae, 
 
 + The closed-form solution/formula for non-zero `v2b` is only valid for `taus2tau0=0` and `xi=0`. Switch to series solutions using function `lya_spec_ses` for non-zero `v2b`, `taus2tau0`, and `xi`. Notice that the series solution for non-zero `v2b` is not accurate for `abs(v2b)>1`. 
 + The closed-form solution/formula for `abs(v2b)>100` is not tested again Monte Carlo radiative transfer simulation. 
 + The closed-form solution/formula for `log10(av*tau0)` outside [2.2, 4.2] is not tested again Monte Carlo radiative transfer simulation. 
 + The recoil correction for non-zero `v2b` is not tested again Monte Carlo radiative transfer simulation. 
 
-For function `lya_spec_ses` of series solutions, 
+For function `lya_spec_ses` using series solutions, 
 
 + The series solution for `abs(v2b)>1` is no longer accurate. Switch to closed-form solutions/formulae using function `lya_spec_cls` for better accuracy. Notice that the closed-form solution/formula for non-zero `v2b` is only functional for `taus2tau0=0` and `xi=0`. 
 + The recoil correction for non-zero `v2b` is not tested again Monte Carlo radiative transfer simulation. 
 
-For function `lya_spec_sim` of simulated spectra, 
+For function `lya_spec_sim` using cached simulated Lya spectra, 
 
 + Only certain discrete values of the input parameters have corresponding RT simulations. When using `lya_spec_sim`, input parameters other than the available ones will raise an error. Check Section **Available parameters of simulated Lya spectra with RT** for available parameters. 
 
