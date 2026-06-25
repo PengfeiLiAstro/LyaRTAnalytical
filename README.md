@@ -197,7 +197,7 @@ For function `lya_spec_ses` using series solutions,
 
 For function `lya_spec_sim` using cached simulated Lya spectra, 
 
-+ Only certain discrete values of the input parameters have corresponding RT simulations. When using `lya_spec_sim`, input parameters other than the available ones will raise an error. Check Section [Available parameters of simulated Lya spectra with RT](### Available parameters of simulated Lya spectra with RT) for available parameters. 
++ Only certain discrete values of the input parameters have corresponding RT simulations. When using `lya_spec_sim`, input parameters other than the available ones will raise an error. Check Section [Available parameters of simulated Lya spectra with RT](###Available-parameters-of-simulated-Lya-spectra-with-RT) for available parameters. 
 
 ## Author & Email
 
