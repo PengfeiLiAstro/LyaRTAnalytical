@@ -28,7 +28,7 @@ LyaRTAnalytical/
 ```
 ## Usage
 ### Examples in jupyter-notebook
-Check the jupyter-notebook [lyart_spec_example.ipynb](lyart_spec_example.ipynb) for usage examples. More details can be found in Li & Zheng (2026). 
+Check the jupyter-notebook [lyart_spec_example.ipynb](lyart_spec_example.ipynb) for usage examples. More details can be found in [Li & Zheng (2026)](http://arxiv.org/abs/2606.27423). 
 
 ### Function description
 There are three main functions for evaluating Lya spectra with RT, `lya_spec_cls` using closed-form solutions/formulae, `lya_spec_ses` using series solutions, and `lya_spec_sim` using cached RT simulations. 
@@ -207,7 +207,7 @@ Email: Pengfei.Li@utah.edu.
 
 ## Citations
 
-Please cite Li & Zheng (2026) if you adopt the formulae or functions related to this package. 
+Please cite [Li & Zheng (2026)](http://arxiv.org/abs/2606.27423) if you adopt the formulae or functions related to this package. 
 
 ## License
 
